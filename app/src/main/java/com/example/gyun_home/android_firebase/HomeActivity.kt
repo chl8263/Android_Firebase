@@ -1,6 +1,7 @@
 package com.example.gyun_home.android_firebase
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
@@ -58,6 +59,10 @@ class HomeActivity : AppCompatActivity() {
             alertDialog.setNegativeButton("취소", {dialog, which -> dialog.dismiss() })
             alertDialog.show()
         }
+
+        button_database.setOnClickListener {
+            startActivity(Intent(this,DatabaseActivity::class.java))
+        }
     }
 
     fun changePasswd (passwd : String){
@@ -101,7 +106,7 @@ class HomeActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().currentUser!!.delete().addOnCompleteListener {task ->
             if(task.isSuccessful){
                 FirebaseAuth.getInstance().signOut()
-                LoginManager.getInstance().logOut()
+
                 Toast.makeText(this,"아이디 삭제 완료 ", Toast.LENGTH_SHORT).show()
                 finish()
             }else {
