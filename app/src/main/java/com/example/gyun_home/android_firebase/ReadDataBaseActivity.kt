@@ -4,12 +4,15 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.TextView
+import com.example.gyun_home.android_firebase.R.array.city
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_read_data_base.*
@@ -21,6 +24,8 @@ class ReadDataBaseActivity : AppCompatActivity() {
     var realTimeKeyArrayList = arrayListOf<String>()
 
     var getarrayList = arrayListOf<UserDTO>()
+
+    var listForFilter: ArrayList<UserDTO>? = null
 
     var city: String? = null
 
@@ -92,6 +97,42 @@ class ReadDataBaseActivity : AppCompatActivity() {
             }
 
         }
+        read_database_activity_editText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                searchList(s.toString())
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+        })
+    }
+
+    fun searchList(filterString: String) {
+        var filterList = listForFilter!!.filter { userDTO ->
+            //userDTO.name!!.contains(filterString)
+            checkCharacter(userDTO.name!!,filterString)
+        }
+        getarrayList.clear()
+        getarrayList.addAll(filterList)
+        //getarrayList = filterList as ArrayList<UserDTO>  //이렇게 하면 주솟값이 변경되어 에러가 날 수 있다 꼭 위에처럼 clear 한뒤에 다시 addAll 해주자
+        recyclerView_read_database.adapter.notifyDataSetChanged()
+
+    }
+
+    fun checkCharacter(name: String, searchString: String) : Boolean{
+
+        var array = searchString.split(" ")
+            for(item in array){
+                if(name.contains(item))
+                    return true
+        }
+        return false
+
     }
 
     fun listBySpiner() {
@@ -107,9 +148,10 @@ class ReadDataBaseActivity : AppCompatActivity() {
                             var userDTO = item.toObject(UserDTO::class.java)
                             getarrayList.add(userDTO!!)
                         }
+                        listForFilter = getarrayList.clone() as ArrayList<UserDTO>  // 레퍼런스가 아닌 실제 내용까지 복사가 된다 clone 을해야됨
                         recyclerView_read_database.adapter.notifyDataSetChanged()
                     }.addOnFailureListener { exception ->
-                        Log.e("execption",exception.toString())
+                        Log.e("execption", exception.toString())
                     }
 
         }

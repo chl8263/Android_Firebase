@@ -17,5 +17,8 @@ class DatabaseActivity : AppCompatActivity() {
         button_database_read.setOnClickListener {
             startActivity(Intent(this, ReadDataBaseActivity::class.java))
         }
+        button_database_update_delete.setOnClickListener {
+            startActivity(Intent(this,ModiftDatabaseActivity::class.java))
+        }
     }
 }

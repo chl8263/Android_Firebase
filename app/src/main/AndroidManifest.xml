@@ -20,7 +20,10 @@
         <activity android:name=".FindPasswdActivity" />
         <activity android:name=".DatabaseActivity" />
         <activity android:name=".DatabaseCreateActivity" />
-        <activity android:name=".ReadDataBaseActivity"></activity>
+        <activity android:name=".ReadDataBaseActivity" />
+        <activity android:name=".ReadorderbyDatabaseActivity" />
+        <activity android:name=".ModiftDatabaseActivity" />
+        <activity android:name=".StorageActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StorageActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="사진업로드 삭제"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/storage_imageView_local"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/com_facebook_auth_dialog_background" />
+
+    <EditText
+        android:id="@+id/storage_editText_fileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:ems="10"
+        android:hint="FileName"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/storage_editText_documentid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/storage_imageView_local" />
+
+    <EditText
+        android:id="@+id/storage_editText_documentid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:ems="10"
+        android:hint="DocumentId"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/storage_imageView_local"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storage_editText_fileName" />
+
+    <Button
+        android:id="@+id/storage_button_fileUpload"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="사진업로드"
+        app:layout_constraintEnd_toStartOf="@+id/storage_button_delete"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storage_imageView_local" />
+
+    <Button
+        android:id="@+id/storage_button_delete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="사진 삭제"
+        app:layout_constraintBottom_toBottomOf="@+id/storage_button_fileUpload"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/storage_button_fileUpload"
+        app:layout_constraintTop_toTopOf="@+id/storage_button_fileUpload" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="사진읽어오기"
+        app:layout_constraintTop_toBottomOf="@+id/storage_button_fileUpload"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <EditText
+        android:id="@+id/storage_editText_document_idRead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="documetId"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/storage_button_image_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사진읽어오기"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.753"
+        app:layout_constraintStart_toEndOf="@+id/storage_editText_document_idRead"
+        tools:layout_editor_absoluteY="253dp" />
+
+    <ImageView
+        android:id="@+id/storage_imageView_server"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storage_editText_document_idRead"
+        app:srcCompat="@drawable/com_facebook_button_background" />
+</android.support.constraint.ConstraintLayout>

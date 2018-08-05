@@ -63,6 +63,10 @@ class HomeActivity : AppCompatActivity() {
         button_database.setOnClickListener {
             startActivity(Intent(this,DatabaseActivity::class.java))
         }
+
+        button_storage.setOnClickListener {
+            startActivity(Intent(this,StorageActivity::class.java))
+        }
     }
 
     fun changePasswd (passwd : String){
